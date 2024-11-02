@@ -1,9 +1,9 @@
 ---
 title: Twitter(X) API - 기본정보조회
 author: YALN
-date: 2024-11-02 00:34:00 +0800
+date: 2024-11-03 00:34:00 +0800
 categories: [API, Twitter(X)]
-tags: [API, Twitter, NodeJS, VS Code, IntelliJ, HTML, JS]
+tags: [API, Twitter, VS Code, HTML, JS]
 ---
  
 ## _For What?_
