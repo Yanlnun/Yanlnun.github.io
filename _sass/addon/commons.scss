@@ -689,7 +689,8 @@ $btn-mb: 0.5rem;
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: var(--sidebar-bg);
+  background: url('../../assets/img/sidebar_bg.png') no-repeat center;
+  background-size: cover;
   border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for IE, Edge and Firefox */
@@ -732,8 +733,14 @@ $btn-mb: 0.5rem;
     @include mt-mb(2.5rem);
     @extend %clickable-transition;
 
-    padding-left: 2.5rem;
-    padding-right: 1.25rem;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
     width: 100%;
   }
 
@@ -817,7 +824,8 @@ $btn-mb: 0.5rem;
 
   .sidebar-bottom {
     padding-left: 2rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
+    justify-content: center;
     margin-bottom: 1.5rem;
 
     $btn-size: 1.75rem;
