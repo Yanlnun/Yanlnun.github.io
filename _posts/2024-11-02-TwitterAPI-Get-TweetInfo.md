@@ -47,7 +47,7 @@ fetch(`https://api.twitter.com/${APIurl}`, {
 <br>
 <br>
 
-## STEP1 - 트윗계정 조회 : /2/users/by/username/${userName}
+## STEP1 - 트윗계정 조회
 ___
 <br>
 
@@ -86,7 +86,7 @@ fetch(`https://api.twitter.com/2/users/by/username/${username}`, {
 <br>
 <br>
 
-## STEP2 - 해당 계정의 최신 트윗(게시글) 조회 : /2/users/${userId}/tweets 
+## STEP2 - 해당 계정의 최신 트윗(게시글) 조회
 ___
 <br>
 
@@ -145,7 +145,7 @@ return fetch(`https://api.twitter.com/2/users/${userId}/tweets?max_results=5`, {
 <br>
 <br>
 
-## STEP3 - 해당 트윗(게시글)의 정보조회 : /2/tweets?ids=${tweetId}
+## STEP3 - 해당 트윗(게시글)의 정보조회
 ___
 <br>
 
@@ -219,7 +219,7 @@ API url 앞부분은 그냥 트윗의 기본정보를 조회하는 부분이고,
 ___
 <br>
 
-사실 [STEP3](#step3---해당-트윗게시글의-정보조회--2tweetsidstweetid)에서 알게된 tweet.fields 파라미터는 [STEP2](#step2---해당-계정의-최신-트윗게시글-조회--2usersuseridtweets-) 단계에서 붙여도 된다. 
+사실 [STEP3](#step3---해당-트윗게시글의-정보조회)에서 알게된 tweet.fields 파라미터는 [STEP2](#step2---해당-계정의-최신-트윗게시글-조회) 단계에서 붙여도 된다. 
 
 ```js
 const BEARER_TOKEN = ""; //TwitterAPI 앱등록시 발급받는 BEARER_TOKEN 기입
