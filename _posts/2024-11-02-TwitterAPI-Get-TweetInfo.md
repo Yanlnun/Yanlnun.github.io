@@ -10,11 +10,11 @@ tags: [API, Twitter, NodeJS, VS Code, IntelliJ, HTML, JS]
 ___
 &ensp; 간단하게 입력받은 개인 혹은 단체의 트윗계정의 최근 트윗에 대한 리트윗 수를 구하고싶다. 
 
-![img](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/1.png)
+![img](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/1.png)
 
 &ensp; Twitter가 X.com 으로 ~~타락~~한 뒤, URL 부분에선 채널명만 알 수 있을뿐 더이상 USERID 값( 숫자로만 이뤄진 ID)을 찾아볼순없다. 물론 개발자도구(F12)에서 Element -> Ctrl+F -> "ident" 로 검색 시 손쉽게 ID 넘버값을 확인 할 수 있지만, 그래도 모처럼 유료API 계정을 경험 할 수 있게 됐으니 한번 API요청으로 이것까지 받아와보자.  
 
-![img](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/2.png)
+![img](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/2.png)
 
 &ensp; Twitter API 는 기본적으로 트윗ID ( 넘버 아이디 )값을 기준으로 이뤄지기 때문에 API 활용함에 꼭 필요한 최소한의 정보이다. 
 
@@ -74,11 +74,11 @@ fetch(`https://api.twitter.com/2/users/by/username/${username}`, {
   .catch((error) => console.error("Error:", error));
 ```
 
-![img](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/3.png)
+![img](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/3.png)
 
 확인해보니 전체적으로는 id, name, username 값들을 받을수있고, 지금 필요한 id값만 받아주고 실제로 맞는지 확인해보자.
 
-![img](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/4.png)
+![img](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/4.png)
 
 정확하게 맞아 떨어지는것을 확인했다면, 다음 스텝으로 가보자.
 
@@ -124,7 +124,7 @@ fetch(`https://api.twitter.com/2/users/by/username/${username}`, {
   })
   .catch((error) => console.error("Error:", error));
 ```
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/5.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/5.png)
 
 받아올수있는 정보는 최근 10개의 트윗과 각 트윗의 텍스트내용 및 트윗id 값들로 확인되고, 기본적으로 최신순으로 정렬되는듯하여 data[0]으로 접근했는데 meta 쪽에서 newest_id 값을 직접 가져와도 될것같다.
 
@@ -140,7 +140,7 @@ return fetch(`https://api.twitter.com/2/users/${userId}/tweets?max_results=5`, {
 // 생략
 
 ```
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/6.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/6.png)
 <br>
 <br>
 <br>
@@ -194,7 +194,7 @@ fetch(`https://api.twitter.com/2/users/by/username/${username}`, {
   })
   .catch((error) => console.error("Error:", error));
 ```
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/7.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/7.png)
 
 추가된 API 호출문을 보면 파라미터값으로 ids와 tweet.fields 값을 같이 보냈는데, 중요한건 tweet.fields 이다.
 
@@ -254,7 +254,7 @@ fetch(`https://api.twitter.com/2/users/by/username/${username}`, {
   })
   .catch((error) => console.error("Error:", error));
 ```
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/8.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/8.png)
 
 이렇게 하면 API 요청도 적어지고, 코드도 짧아지니 실제로 써야한다면 이게 더 좋을것같긴하다. 물론 목적에 따라 달라질수도 있겠지만.. 
 
@@ -271,7 +271,7 @@ ___
 > CASE1 - Too Many Request
 {: .prompt-danger }
 
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/9.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/9.png)
 
 이게 제일 곤란했다. 트위터API는 과부화 방지용으로 일정시간동안 제한된 횟수만큼 API 보내게끔 설계되어 있다고한다. 그래서 수정-> 코드실행(API재요청) 과정이 반복될경우 "Too Many Request" 라는 오류가 콘솔창에 출력되며, data가 제공되지않는다... 
 
@@ -282,7 +282,7 @@ ___
 > CASE2 - CORS policy
 {: .prompt-danger }
 
-![실행결과](assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/10.png)
+![실행결과](/assets/img/post_imgs/2024-11-02-TwitterAPI-Get-TweetInfo/10.png)
 
 너무 유명한 CORS 문제. 트위터API라서 생긴 문제가 아니라 로컬환경에서 별다른 조치없이 API 쓰게되면 거의 반드시 겪게 되는 문제라 기재할까 했으나, 혹시나 필요한 사람이 있을경우 간단한 조치 방법이라도 알려주기위해 글을 남긴다. 
 
